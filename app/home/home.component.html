@@ -1,0 +1,57 @@
+<!--
+<div class="col-md-6 col-md-offset-3">
+    <h1>Hi {{currentUser.firstName}}!</h1>
+    <p>You're logged in with Angular 2!!</p>
+    <h3>All registered users:</h3>
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstName}} {{user.lastName}})
+            - <a (click)="deleteUser(user.id)">Delete</a>
+        </li>
+    </ul>
+    <p><a [routerLink]="['/login']">Logout</a></p>
+</div> -->
+
+<!-- History -->
+<section>
+  <div class="pull-right">
+    <a [routerLink]="['/login']" class="btn btn-sm btn-danger btn-block" aria-expanded="true" data-toggle="tab">Logout</a>
+  </div>
+  <h2 class="page-header"><a href="" data-toggle="collapse" class="link-collapse">Hi {{currentUser.firstName}}!</a></h2>
+  <h2 class="page-header"><a href="" data-toggle="collapse" class="link-collapse">Application User List</a></h2>
+
+  <div class="collapse in" id="collapseClient02History">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>Password</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>City</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td><a href="#testDetailsPBT00" data-toggle="tab">{{user.username}}</a></td>
+          <!-- <td><span class="label label-success" [ngClass]="{'label-success': car.condition === 'Passed', 'label-danger': car.condition !== 'Passed'}">Passed</span></td> -->
+          <td><span class="text-muted">{{user.password}}</span></td>
+          <td>{{user.firstName}} </td>
+          <td>{{user.lastName}} </td>
+          <td>{{user.city}} </td>
+          <td><a class="btn btn-primary btn-block" (click)="deleteUser(user.id)">Delete</a></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <ul class="pagination pagination-sm pull-right">
+              <li class="active"><a href="#">{{users.length}} <span class="sr-only">(current)</span></a></li>
+            </ul>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</section>

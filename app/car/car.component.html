@@ -1,0 +1,50 @@
+<!-- History -->
+<section>
+  <h2 class="page-header"><a data-toggle="collapse" class="link-collapse">Car List</a></h2>
+  <div class="collapse in" id="collapseClient02History">
+    <!-- Filters -->
+    <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-md-3">
+            <select class="form-control margin-top-md">
+              <option selected>All Dates</option>
+              <option disabled>--------</option>
+              <option>Last 30 Days</option>
+              <option>Last 60 Days</option>
+              <option disabled>--------</option>
+              <option>Specific Dates</option>
+            </select>
+          </div>
+        </div>
+    </form>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Condition</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th>Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars | async">
+          <td><a (click)="onSelect(car)" data-toggle="tab">{{car.name}}</a></td>
+          <td><span class="label label-success" [ngClass]="{'label-success': car.condition === 'Passed', 'label-danger': car.condition !== 'Passed'}">Passed</span></td>
+          <td><span class="text-muted">{{car.model}}</span></td>
+          <td>{{car.year}} </td>
+          <td>{{car.color}} </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <ul class="pagination pagination-sm pull-right">
+              <li class="active"><a href="#">1 <span class="sr-only">(cars)</span></a></li>
+            </ul>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+    </div>
+</section>

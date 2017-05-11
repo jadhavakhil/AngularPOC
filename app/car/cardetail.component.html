@@ -1,0 +1,62 @@
+<!--
+<h2>Car Details</h2>
+  <div *ngIf="car">
+    <h3>"{{ car.name }}"</h3>
+    <div>
+      <label>Id: </label>{{ car.id }}</div>
+    <div>
+      <label>Name: </label>
+      <input [(ngModel)]="car.name" placeholder="name"/>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+-->
+
+<h2 class="page-header"><a data-toggle="collapse" class="link-collapse">Edit Car</a></h2>
+<section *ngIf="car" id="participantProfileGeneralEdit">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td><strong>Name</strong></td>
+        <td>
+          <input [(ngModel)]="car.name" class="form-control" placeholder="name"/>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Model</strong> <small class="text-normal text-muted">(optional)</small></td>
+        <td>
+          <input [(ngModel)]="car.model" class="form-control" placeholder="name"/>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Year</strong></td>
+        <td>
+          <input [(ngModel)]="car.year" class="form-control" placeholder="name"/>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Color</strong> <small class="text-normal text-muted">(optional)</small></td>
+        <td>
+          <input [(ngModel)]="car.color" class="form-control" placeholder="name"/>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Vehicle Condition</strong></td>
+        <td>
+          <input [(ngModel)]="car.condition" class="form-control" placeholder="name"/>
+        </td>
+      </tr>
+      
+    
+    <tfoot>
+      <tr>
+        <td></td>
+        <td>
+          <button class="btn btn-sm btn-success" (click)="gotoCars()">Back</button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</section>

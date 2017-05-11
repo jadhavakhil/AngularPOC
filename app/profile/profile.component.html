@@ -1,0 +1,158 @@
+<section>
+  <div class="pull-right">
+    <a class="btn btn-link" id="btnClientProfileGeneralEdit" *ngIf="!isEdit" (click)="onEdit()">Edit</a>
+    <a class="btn btn-link" id="btnClientProfileGeneralEditCancel" *ngIf="isEdit" (click)="onCancel()">Cancel</a>
+  </div>
+  <h2 class="page-header margin-top-none">Personal</h2>
+  <section *ngIf="!isEdit" id="participantProfileGeneralPreview">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td><strong>Status</strong></td>
+          <td><span class="label label-success statusClientActive">Active</span></td>
+        </tr>
+        <tr>
+          <td><strong>System ID</strong></td>
+          <td>1234567890</td>
+        </tr>
+        <tr *ngIf="customer.firstName">
+          <td><strong>First Name</strong></td>
+          <td>{{customer.firstName}}</td>
+        </tr>
+        <tr *ngIf="customer.middleName">
+          <td><strong>Middle Name</strong></td>
+          <td>{{customer.middleName}}</td>
+        </tr>
+        <tr *ngIf="customer.lastName">
+          <td><strong>Last Name</strong></td>
+          <td>{{customer.lastName}}</td>
+        </tr>
+        <tr>
+          <td><strong>Date of Birth</strong></td>
+          <td>{{customer.month}}. {{customer.day}}, {{customer.year}}</td>
+        </tr>
+        <tr *ngIf="customer.timeZone">
+          <td><strong>Timezone</strong></td>
+          <td>{{customer.timeZone}}</td>
+        </tr>
+        <tr *ngIf="customer.gender">
+          <td><strong>Gender</strong></td>
+          <td>{{customer.gender}}</td>
+        </tr>
+        <tr *ngIf="customer.ethnicity">
+          <td><strong>Ethnicity</strong></td>
+          <td>{{customer.ethnicity}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section *ngIf="isEdit" id="participantProfileGeneralEdit">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td><strong>Status</strong></td>
+          <td>
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default active" id="profileSaveBtnGroupPersonalActive">
+                <input name="options00" type="radio" autocomplete="off">Active
+              </label>
+              <label class="btn btn-default" id="profileSaveBtnGroupPersonalInactive">
+                <input name="options00" type="radio" autocomplete="off">Inactive
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>First Name</strong></td>
+          <td>
+            <input class="form-control" type="text" [(ngModel)]="customer.firstName" value="John">
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Middle Name</strong> <small class="text-normal text-muted">(optional)</small></td>
+          <td>
+            <input class="form-control" type="text" [(ngModel)]="customer.middleName" placeholder="Add a Middle Name">
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Last Name</strong></td>
+          <td>
+            <input class="form-control" type="text" [(ngModel)]="customer.lastName">
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>Date of Birth</strong></td>
+          <td>
+            <div class="pull-left select-date">
+              <select class="form-control" [(ngModel)]="customer.day">
+                <option [ngValue]="0">Select a Day</option>
+                <option *ngFor="let day of dayList" [ngValue]="day" [selected]="customer.day === day">
+                  {{day}}
+                </option>
+              </select>
+            </div>
+            <div class="pull-left select-date margin-left-sm">
+              <select class="form-control" [(ngModel)]="customer.month">
+                <option [ngValue]="0">Select a Month</option>
+                <option *ngFor="let month of monthList" [ngValue]="month" [selected]="customer.month === month">
+                  {{month}}
+                </option>
+              </select>
+            </div>
+            <div class="pull-left select-date margin-left-sm">
+              <select class="form-control" [(ngModel)]="customer.year">
+                <option [ngValue]="0">Select a Year</option>
+                <option *ngFor="let year of yearList" [ngValue]="year" [selected]="customer.year === year">
+                  {{year}}
+                </option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Timezone</strong></td>
+          <td>
+
+            <select class="form-control" [(ngModel)]="customer.timeZone">
+              <option [ngValue]="0">Select a TimeZone</option>
+              <option *ngFor="let timeZone of timeZoneList" [ngValue]="timeZone" [selected]="customer.timeZone === timeZone">
+                {{timeZone}}
+              </option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Gender</strong></td>
+          <td>
+            <select class="form-control" [(ngModel)]="customer.gender">
+              <option [ngValue]="0">Select a Gender</option>
+              <option *ngFor="let gender of genderList" [ngValue]="gender" [selected]="customer.gender === gender">
+                {{gender}}
+              </option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Ethnicity</strong></td>
+          <td>
+            <select class="form-control" [(ngModel)]="customer.ethnicity">
+              <option [ngValue]="0">Select a Ethnicity</option>
+              <option *ngFor="let ethnicity of ethnicityList" [ngValue]="ethnicity" [selected]="customer.ethnicity === ethnicity">
+                {{ethnicity}}
+              </option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td>
+            <a class="btn btn-sm btn-success" id="btnClientProfileGeneralEditSave" (click)="onSave()">Save Changes</a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+</section>

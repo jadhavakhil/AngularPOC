@@ -1,0 +1,17 @@
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="col-sm-8 col-sm-offset-2">
+            <section id="main-nav">
+                    <ul class="nav nav-tabs" role="tablist" id="main-nav-tabs">
+                  			<li role="presentation" ><a routerLink="" routerLinkActive="active" aria-controls="profile" role="tab" data-toggle="tab">Home</a></li>
+                        <li role="presentation"><a routerLink="/car" routerLinkActive="active" aria-controls="cars" role="tab" data-toggle="tab">Cars</a></li>
+                        <li role="presentation"><a routerLink="/profile" routerLinkActive="active" aria-controls="notes" role="tab" data-toggle="tab">Profile</a></li>
+                        <li role="presentation"><a routerLink="/carPagination" routerLinkActive="active" aria-controls="notes" role="tab" data-toggle="tab">Pagination Demo</a></li>
+                    </ul>
+                </section>
+                <alert></alert>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

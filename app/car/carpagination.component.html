@@ -1,0 +1,54 @@
+<div class="form-group">
+  <label for="inputName">Filter </label>
+  <input type="text" class="form-control" name="inputName" [(ngModel)]="inputName" />
+  <br/>
+  <button class="btn btn-success btn-sm" (click)="FilterByName()">Search</button>
+</div>
+
+<div class='row'>
+  <div class="panel panel-default">
+
+    <div class='panel-heading'>Cars List</div>
+
+    <div class='panel-body'>
+      <table class="table table-striped table-hover ">
+        <thead>
+          <tr>
+            <th>
+              <a sort-by="name" (sorted)="sort($event)" href="#">Name</a>
+              <span *ngIf="!sortReverse && sortProperty=='name'" class="glyphicon glyphicon-menu-down"></span>
+              <span *ngIf="sortReverse && sortProperty=='name'" class="glyphicon glyphicon-menu-up"></span>
+            </th>
+            <th>Condition</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Color</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of items">
+            <td><a (click)="onSelect(car)" data-toggle="tab">{{car.name}}</a></td>
+            <td><span class="label label-success" [ngClass]="{'label-success': car.condition === 'Passed', 'label-danger': car.condition !== 'Passed'}">Passed</span></td>
+            <td><span class="text-muted">{{car.model}}</span></td>
+            <td>{{car.year}} </td>
+            <td>{{car.color}} </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btn-toolbar" role="toolbar" style="margin: 0;">
+        <div class="btn-group">
+          <label style="margin-top:10px">Page {{currentIndex}}/{{pageNumber}}</label>
+        </div>
+        <div class="btn-group pull-right">
+          <ul class="pagination">
+            <li [ngClass]="{'disabled': (currentIndex == 1 || pageNumber == 0)}"><a (click)="prevPage()">Prev</a></li>
+            <li *ngFor="let page of pagesIndex" [ngClass]="{'active': (currentIndex == page)}">
+              <a (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li [ngClass]="{'disabled': (currentIndex == pageNumber || pageNumber == 0)}"><a (click)="nextPage()">Next</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
